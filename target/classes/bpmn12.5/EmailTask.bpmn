@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn"
+	xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+	xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema"
+	expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+	<process id="process1" name="process1">
+		<startEvent id="startevent1" name="Start"></startEvent>
+		<sendTask id="mailtask1" name="Mail Task" activiti:type="mail">
+			<extensionElements>
+				<activiti:field name="from" stringValue="hu.meng@126.com" />
+				<activiti:field name="to"
+					stringValue="hu.meng@126.com" />
+				<activiti:field name="subject" stringValue="test" />
+				<activiti:field name="html">
+					<activiti:expression>
+				        <![CDATA[
+				          <html>
+				            <body>
+				              <table border="1">
+				              	<tr>
+				              		<td>name</td>
+				              		<td>age</td>
+				              	</tr>
+				              </table>
+				            </body>
+				          </html>
+				        ]]>
+      				</activiti:expression>
+				</activiti:field>
+			</extensionElements>
+		</sendTask>
+		<endEvent id="endevent1" name="End"></endEvent>
+		<sequenceFlow id="flow1" name="" sourceRef="startevent1"
+			targetRef="mailtask1"></sequenceFlow>
+		<sequenceFlow id="flow2" name="" sourceRef="mailtask1"
+			targetRef="endevent1"></sequenceFlow>
+	</process>
+	<bpmndi:BPMNDiagram id="BPMNDiagram_process1">
+		<bpmndi:BPMNPlane bpmnElement="process1" id="BPMNPlane_process1">
+			<bpmndi:BPMNShape bpmnElement="startevent1"
+				id="BPMNShape_startevent1">
+				<omgdc:Bounds height="35" width="35" x="260" y="250"></omgdc:Bounds>
+			</bpmndi:BPMNShape>
+			<bpmndi:BPMNShape bpmnElement="mailtask1" id="BPMNShape_mailtask1">
+				<omgdc:Bounds height="55" width="105" x="360" y="240"></omgdc:Bounds>
+			</bpmndi:BPMNShape>
+			<bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+				<omgdc:Bounds height="35" width="35" x="540" y="250"></omgdc:Bounds>
+			</bpmndi:BPMNShape>
+			<bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+				<omgdi:waypoint x="295" y="267"></omgdi:waypoint>
+				<omgdi:waypoint x="360" y="267"></omgdi:waypoint>
+			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+				<omgdi:waypoint x="465" y="267"></omgdi:waypoint>
+				<omgdi:waypoint x="540" y="267"></omgdi:waypoint>
+			</bpmndi:BPMNEdge>
+		</bpmndi:BPMNPlane>
+	</bpmndi:BPMNDiagram>
+</definitions>
